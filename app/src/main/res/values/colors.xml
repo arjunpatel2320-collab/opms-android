@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#EDF3F4</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="ink">#10242C</color>
+    <color name="muted">#4B626B</color>
+    <color name="line">#D3E0E3</color>
+    <color name="brand">#0B6E72</color>
+    <color name="brand_ink">#FFFFFF</color>
+    <color name="danger">#B3261E</color>
+    <color name="ok">#0A8266</color>
+    <color name="icon_bg">#0B171C</color>
+    <color name="icon_ring">#49C4C2</color>
+    <color name="icon_track">#213941</color>
+</resources>

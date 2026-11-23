@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OPMS</string>
+    <string name="setup_title">Office Presence</string>
+    <string name="setup_lede">Enter the address of your office’s OPMS server. Ask your administrator if you don’t know it.</string>
+    <string name="setup_label">Server address</string>
+    <string name="setup_hint">192.168.1.10:4000</string>
+    <string name="setup_help">Your phone must be connected to the office Wi-Fi.</string>
+    <string name="setup_connect">Connect</string>
+    <string name="setup_checking">Checking the server…</string>
+    <string name="error_title">Can’t reach the server</string>
+    <string name="error_retry">Try again</string>
+    <string name="error_change">Change server address</string>
+    <string name="notif_channel">At work</string>
+    <string name="notif_channel_desc">Shown while the app keeps you marked as present</string>
+</resources>

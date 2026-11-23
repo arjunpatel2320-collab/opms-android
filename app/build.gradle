@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.application'
+}
+
+// The GitHub build sets these. Built by hand, the app is version 1.0.0 (1).
+def ciVersionCode = (System.getenv('OPMS_VERSION_CODE') ?: '1') as Integer
+def ciVersionName = System.getenv('OPMS_VERSION_NAME') ?: '1.0.0'
+// Signing key (optional). Without it the APK is signed with a temporary debug key.
+def keystoreFile = System.getenv('OPMS_KEYSTORE_FILE')
+def haveKeystore = keystoreFile != null && !keystoreFile.isEmpty() && new File(keystoreFile).exists()
+
+android {
+    namespace 'com.opms.presence'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.opms.presence'
+        minSdk 26
+        targetSdk 34
+        versionCode ciVersionCode
+        versionName ciVersionName
+    }
+
+    signingConfigs {
+        if (haveKeystore) {
+            opms {
+                storeFile file(keystoreFile)
+                storeType 'pkcs12'
+                storePassword System.getenv('OPMS_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('OPMS_KEY_ALIAS') ?: 'opms'
+                keyPassword System.getenv('OPMS_KEY_PASSWORD') ?: System.getenv('OPMS_KEYSTORE_PASSWORD')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig haveKeystore ? signingConfigs.opms : signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core:1.13.1'
+}
